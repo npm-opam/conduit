@@ -1,0 +1,63 @@
+{
+    "name": "conduit-actual",
+    "exportedEnvVars": {
+        "conduit_installed": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "true"
+        },
+        "conduit_version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "0.13.0"
+        },
+        "conduit_enable": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "enable"
+        },
+        "FINDLIB": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib"
+        },
+        "version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "0.13.0"
+        },
+        "PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/bin"
+        }
+    },
+    "version": "0.13.0",
+    "dependencies": {
+        "@opam-alpha/cstruct": ">=1.0.1",
+        "@opam-alpha/sexplib": "*",
+        "@opam-alpha/stringext": "*",
+        "@opam-alpha/ocamlfind": "*",
+        "@opam-alpha/ipaddr": ">=2.5.0",
+        "dependency-env": "https://github.com/npm-ml/dependency-env.git",
+        "substs": "https://github.com/yunxing/substs.git",
+        "@opam-alpha/ocamlbuild": "*",
+        "@opam-alpha/async_ssl": "*",
+        "@opam-alpha/ppx_sexp_conv": "*",
+        "@opam-alpha/uri": "*",
+        "@opam-alpha/ppx_optcomp": ">=113.24.00",
+        "@opam-alpha/ppx_driver": "*",
+        "@opam-alpha/lwt": "*",
+        "nopam": "https://github.com/yunxing/nopam.git",
+        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git",
+        "@opam-alpha/async": "*"
+    },
+    "scripts": {
+        "postinstall": "eval $(dependencyEnv) && nopam && make && make install && (opam-installer --prefix=$opam_prefix || true)"
+    },
+    "peerDependencies": {
+        "@opam-alpha/ocaml": ">= 4.02.3"
+    }
+}
